@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+char arr[115][115];
+int main()
+{
+	int a,b,x,y;
+	cin>>a>>b;
+	for(int i=1;i<=a;i++)
+	{
+		for(int j=1;j<=b;j++)
+		{
+			cin>>arr[i][j];
+		}
+	}
+	cin>>x>>y;
+	for(int i=1;i<=a;i++)
+	{
+		for(int j=b+1;j<=2*b;j++)
+		{
+			arr[i][j]=arr[i][2*b+1-j];
+		}
+	}
+	for(int i=a+1;i<=2*a;i++)
+	{
+		for(int j=1;j<=2*b;j++)
+		{
+			arr[i][j]=arr[2*a+1-i][j];
+		}
+	}
+	if(arr[x][y]=='.')//error
+	{
+		arr[x][y]='#';
+	}
+	else
+	{
+		arr[x][y]='.';
+	}
+	for(int i=1;i<=2*a;i++)//print
+	{
+		for(int j=1;j<=2*b;j++)
+		{
+			cout<<arr[i][j];
+		}
+		cout<<'\n';
+	}
+}
